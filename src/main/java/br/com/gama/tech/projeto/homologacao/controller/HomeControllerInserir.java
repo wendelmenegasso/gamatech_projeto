@@ -60,6 +60,7 @@ public class HomeControllerInserir {
 		clientes.setEmail(eMail);
 		clientes.setNumero_conta(this.conta);
 		clientes.setTelefone(this.telefone);
+		clientes.setAgencia_conta(this.agencia);
 		Contas contas = new Contas();
 		contas.setAgencia(this.agencia);
 		contas.setConta(this.conta);
@@ -150,7 +151,7 @@ public class HomeControllerInserir {
 						+ "              <input type=\"text\" name=\"tipo_conta\" value=\""+this.tipo_conta+"\" readonly> \r\n"
 						+ "            </div>\r\n"
 						+ "          </div>\r\n"
-						+ 			"<input type=\"submit\" value=\"OK\"/>"
+						+ 			"<button type=\"submit\" class=\"btn m-2 btn-info btn-lg\">OK</button>"
 						+ "        </form>\r\n"
 						+ "        <hr>\r\n"
 						+ ""       

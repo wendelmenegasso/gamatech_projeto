@@ -3,7 +3,7 @@ package br.com.gama.tech.projeto.homologacao.negocio;
 import br.com.gama.tech.projeto.homologacao.model.BancoDeDados;
 
 public class Clientes {
-	String nome, cpf, email, telefone, numero_conta;
+	String nome, cpf, email, telefone, numero_conta, agencia_conta;
 
 	public String getNome() {
 		return nome;
@@ -44,9 +44,18 @@ public class Clientes {
 	public void setNumero_conta(String numero_conta) {
 		this.numero_conta = numero_conta;
 	}
+
+	public String getAgencia_conta() {
+		return agencia_conta;
+	}
+
+	public void setAgencia_conta(String agencia_conta) {
+		this.agencia_conta = agencia_conta;
+	}
+
 	public boolean chamaBanco() {
 		BancoDeDados bd = new BancoDeDados();
 		bd.conectar();
-		return bd.incluirCliente(this.nome, this.cpf, Integer.parseInt(this.numero_conta), this.telefone, this.email);
+		return bd.incluirCliente(this.nome, this.cpf, Integer.parseInt(this.numero_conta), this.telefone, this.email,this.agencia_conta);
 	}
 }

@@ -35,7 +35,8 @@ public class HomeControllerConsultar {
 	//Pega os valores via método post do formulário da outra tela
 	//E retorna uma página HTML
 	@PostMapping(name = "cpf_cliente", value = "/home/consultar/concluir/", params = "cpf_cliente")
-	public String consultar(@RequestParam("cpf_cliente") String cpf) {
+	public String consultar(@RequestParam("cpf_cliente") String cpf,
+	@RequestParam("tipo_conta") String tipo_conta){
 		String html = "";
 		BancoDeDados bd = new BancoDeDados();
 		bd.conectar();
@@ -68,8 +69,18 @@ public class HomeControllerConsultar {
 		html += "<br />";
 		html += "<div class=col-sm-7>";
 		html += "<label for=name class=form-label>Nome Completo</label>";
+String nome = bd.consultarNome(cpf,tipo_conta);
+if(nome == null){
+	html = "Não encontrado"+
+			"<form action=/home/ method=post>"
+			+ "<button type=submit class=\"btn m-2 btn-info btn-lg\">Voltar</button>"
+			+ "</form>";
+}
+else {
+	nome = nome.replace(" ", "_");
+	System.out.println(nome);
 
-		html += "<input type=text class=form-control name=nome_cliente value=" + bd.consultaCPF(cpf) + " required>";
+		html += "<input type=text class=form-control name=nome_cliente value=" + nome + " required>";
 		html += "<div class=invalid-feedback>";
 		html += "É necessário um nome válido";
 		html += "</div>";
@@ -128,13 +139,14 @@ public class HomeControllerConsultar {
 		html += "<h4>" + "Tipo de conta: <br><input type=text id=tipo_conta value=" + bd.consultaTipoConta(cpf)
 				+ "></h4>";
 		html += "<br />";
-		html += "<input type=submit value=Voltar>";
+		html += "<button type=submit class=btn m-2 btn-info btn-lg>Voltar</button>";
 
 		html += "</form>";
 
 		html += "</body>";
 		html += "<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>";
 		html += "</html>";
+}
 		return html;
 	}
 }

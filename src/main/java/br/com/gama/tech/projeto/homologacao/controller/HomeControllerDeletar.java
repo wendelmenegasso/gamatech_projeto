@@ -65,7 +65,7 @@ public class HomeControllerDeletar {
 		if(bd.deletarConta(numeroConta)) {
 			html = "<H1> Deletado com sucesso</H1>"
 					+ "<form action=/home/ method=post>"
-					+"<input type=submit value=Voltar>"
+					+"<button type=submit class=btn m-2 btn-info btn-lg>Voltar</button>"
 					+ "</form>";
 		}
 		else html = "Erro ao deletar!";

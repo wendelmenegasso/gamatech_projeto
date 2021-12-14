@@ -89,10 +89,10 @@ public class BancoDeDados {
 	}
 	
 	//Método para Incluir os Clientes, caso consiga incluir, retorna true, caso conntrário false.
-	public boolean incluirCliente(String nome, String cpf, int numeroConta, String telefone, String eMail) {
+	public boolean incluirCliente(String nome, String cpf, int numeroConta, String telefone, String eMail,String agencia_conta) {
 		try {
-			String query = "INSERT INTO clientes (nome_cliente,cpf_cliente,numero_conta,celular_cliente,email_cliente) VALUES ('"+nome+"','"+
-		cpf+"',"+numeroConta+",'"+telefone+"','"+eMail+"');";
+			String query = "INSERT INTO clientes (nome_cliente,cpf_cliente,numero_conta,celular_cliente,email_cliente,agencia_conta) VALUES ('"+nome+"','"+
+		cpf+"',"+numeroConta+",'"+telefone+"','"+eMail+"',"+agencia_conta+");";
 			
 			System.out.println(query);
 			this.statement.execute(query);
@@ -114,12 +114,16 @@ public class BancoDeDados {
 			while(resultset.next()) {
 				deletou = true;
 			}
+			String query3 = "DELETE FROM operacoes WHERE numero_conta="+id+";";
+			System.out.println(query3);
+			this.statement.executeUpdate(query3);
+			
 			String query1 = "DELETE FROM contas WHERE numero_conta="+id+";";
 			System.out.println(query1);
-			this.statement.execute(query1);
+			this.statement.executeUpdate(query1);
 			String query2 = "DELETE FROM clientes WHERE numero_conta="+id+";";
 			System.out.println(query2);
-			this.statement.execute(query2);
+			this.statement.executeUpdate(query2);
 
 		}
 		catch(SQLException e) {
@@ -244,25 +248,27 @@ public class BancoDeDados {
 		try {
 			this.resultset = this.statement.executeQuery(query1);
 			this.statement = this.connection.createStatement();
+			System.out.println(query1);
 			boolean fim = false;
 			while(resultset.next()) {
 				minhaConta = resultset.getString("numero_conta");
 				fim = true;
 				this.resultset = this.statement.executeQuery("Select * From contas where numero_conta="+Integer.parseInt(minhaConta)+";");
 				this.statement = this.connection.createStatement();
+				System.out.println("Select * From contas where numero_conta="+Integer.parseInt(minhaConta)+";");
 				while(resultset.next()) {
 					tipoConta = resultset.getInt("tipo_conta");
 					//Transforma o valor retornado que é integer
 					//Para uma string que corresponde ao tipo da popança.
 					switch(tipoConta) {
 					case 0:
-						return "Poupanca";
+						return "Conta_Corrente";
 					case 1:
-						return "Conta Corrente";
+						return "Conta_Poupanca";
 					case 2:
-						return "Conta Investimento";
+						return "Conta_Investimento";
 					default:
-						return "Conta não encontrada";
+						return "Conta_nao_encontrada";
 					}
 				}
 			}
@@ -301,6 +307,39 @@ public class BancoDeDados {
 		return minhaConta;
 		
 	}
+	public String consultarNome(String cpf,String tipo_conta) {
+		String query1 = "Select * From clientes where cpf_cliente like'%"+cpf+"%';";
+		String minhaConta = null;
+		String minhaAgencia = null;
+		String meuNome = null;
+		try {
+			this.resultset = this.statement.executeQuery(query1);
+			this.statement = this.connection.createStatement();
+			boolean fim = false;
+			while(resultset.next()) {
+				minhaConta = resultset.getString("numero_conta");
+				meuNome = resultset.getString("nome_cliente");
+				minhaAgencia = resultset.getString("numero_agencia");
+				System.out.println(minhaConta + "==="+ minhaAgencia);
+				String query = "Select * from contas Where (numero_conta="+minhaConta+" AND numero_agencia="+minhaAgencia+" AND tipo_conta="+tipo_conta+");";
+				System.out.println(query);
+				this.resultset = this.statement.executeQuery(query);
+				this.statement = this.connection.createStatement();
+				while(resultset.next()) {
+					fim = true;
+					return meuNome;
+				}
+			}
+			//Verifica se a conta existe.
+			if(!resultset.next() && fim==false){
+				System.out.println("Não encontrado!");
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro: "+e.getMessage());
+		}
+		return meuNome;
+		
+	}
 	
 	//Método que faz a aplicação.
 	public boolean aplicar(String agencia, String numero_conta, String valor) {
@@ -315,7 +354,7 @@ public class BancoDeDados {
 				int valorAtualizado =  Integer.parseInt(valor) + resultset.getInt("saldo_conta");
 				String query2 = "UPDATE contas SET saldo_conta="+valorAtualizado+" where numero_conta="+numero_conta+";";
 				this.statement.executeUpdate(query2);
-				String query3 = "INSERT INTO operacoes(tipo_operacao,saldo,descricao,numero_conta) VALUES(1,"+valorAtualizado+","+"'Deposito realizado',"+numero_conta+");";
+				String query3 = "INSERT INTO operacoes(tipo_operacao,saldo,descricao,numero_conta,agencia_conta) VALUES(1,"+valorAtualizado+","+"'Deposito realizado "+valor+"',"+numero_conta+","+agencia+");";
 				System.out.println(query3);
 				this.statement.executeUpdate(query3);
 				aplicou = true;
@@ -330,7 +369,7 @@ public class BancoDeDados {
 	
 	//Método que faz o saque.
 	public boolean retirada(String agencia, String numero_conta, String valor) {
-		String query1 = "SELECT * FROM contas WHERE numero_conta="+numero_conta+";";
+		String query1 = "SELECT * FROM contas WHERE numero_conta="+numero_conta+" AND numero_agencia="+agencia+";";
 		System.out.println(query1);
 		boolean aplicou = false;
 		try {
@@ -342,9 +381,9 @@ public class BancoDeDados {
 				if(Integer.parseInt(valor) <= resultset.getInt("saldo_conta")) {
 					//Faz a subtração do valor sacado no saldo.
 					int valorAtualizado =  resultset.getInt("saldo_conta") - Integer.parseInt(valor) ;
-					String query2 = "UPDATE contas SET saldo_conta="+valorAtualizado+" where numero_conta="+numero_conta+";";
+					String query2 = "UPDATE contas SET saldo_conta="+valorAtualizado+" where numero_conta="+numero_conta+" AND numero_agencia="+agencia+";";
 					this.statement.executeUpdate(query2);
-					String query3 = "INSERT INTO operacoes(tipo_operacao,saldo,descricao,numero_conta) VALUES(0,"+valorAtualizado+","+"'Saque realizado',"+numero_conta+");";
+					String query3 = "INSERT INTO operacoes(tipo_operacao,saldo,descricao,numero_conta,agencia_conta) VALUES(0,"+valorAtualizado+","+"'Saque realizado "+valor+"',"+numero_conta+","+agencia+");";
 					System.out.println(query3);
 					this.statement.executeUpdate(query3);
 					aplicou = true;
@@ -450,8 +489,8 @@ public class BancoDeDados {
 				else if(resultset.getString("tipo_operacao").equals("1")){
 					tipo_operacao = "Depositar";
 				}
-				html+= "<br> Operacao "+contador+"<br>Tipo Operacao = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("descricao")+" disabled>"
-				+ "Valor = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("saldo")+" disabled>"
+				html+= "<br> Operacao "+contador+"<br>Tipo Operacao = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("descricao").replace(" ", "_")+" disabled>"
+				+ "Valor do Saldo na Conta = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("saldo")+" disabled>"
 				+ "Tipo Operacao <input type=text class=form-control id=desc placeholder=pegar do bd value="+tipo_operacao+" disabled>";
 				contador++;
 			}

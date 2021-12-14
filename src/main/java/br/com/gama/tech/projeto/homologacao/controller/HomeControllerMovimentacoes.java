@@ -71,13 +71,69 @@ public class HomeControllerMovimentacoes extends HttpServlet {
 			@RequestParam("numero_conta") String numero_conta) {
 		Operacoes op = new Operacoes();
 		if (op.aplicar(agencia, numero_conta, saldo)) {
-			String html =""+ saldo + " Aplicado na conta " + numero_conta + " Agência " + agencia
+			String html ="<!DOCTYPE html>\r\n"
+					+ "<html>\r\n"
+					+ "\r\n"
+					+ "<head>\r\n"
+					+ "\r\n"
+					+ "  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n"
+					+ "  integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n"
+					+ "\r\n"
+					+ "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js\"></script>\r\n"
+					+ "  \r\n"
+					+ "  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\">\r\n"
+					+ "\r\n"
+					+ "  <!-- Favicons -->\r\n"
+					+ "  <link rel=\"apple-touch-icon\" href=\"/docs/5.0/assets/img/favicons/apple-touch-icon.png\" sizes=\"180x180\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-32x32.png\" sizes=\"32x32\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-16x16.png\" sizes=\"16x16\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"manifest\" href=\"/docs/5.0/assets/img/favicons/manifest.json\">\r\n"
+					+ "  <link rel=\"mask-icon\" href=\"/docs/5.0/assets/img/favicons/safari-pinned-tab.svg\" color=\"#7952b3\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon.ico\">\r\n"
+					+ "  <meta name=\"theme-color\" content=\"#7952b3\">\r\n"
+					+ "\r\n"
+					+ "  <title> Banco Foo Data </title>\r\n"
+					+ "</head>\r\n"
+					+ "\r\n"
+					+ "\r\n"
+					+ "<body class=\"text-center bg-light text-dark\">"+ saldo + " Aplicado na conta " + numero_conta + " Agência " + agencia
 					+ "<form action=/home/ method=post>"
-					+ "<input type=submit value=Voltar>"
+					+ "<button type=submit>Voltar</button>"
 					+ "</form>";
 			return html;
 		}
-		else return "Nâo foi possível aplicar";
+		else return "<!DOCTYPE html>\r\n"
+				+ "<html>\r\n"
+				+ "\r\n"
+				+ "<head>\r\n"
+				+ "\r\n"
+				+ "  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n"
+				+ "  integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n"
+				+ "\r\n"
+				+ "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\r\n"
+				+ "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js\"></script>\r\n"
+				+ "  <script src=\"https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js\"></script>\r\n"
+				+ "  \r\n"
+				+ "  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\">\r\n"
+				+ "\r\n"
+				+ "  <!-- Favicons -->\r\n"
+				+ "  <link rel=\"apple-touch-icon\" href=\"/docs/5.0/assets/img/favicons/apple-touch-icon.png\" sizes=\"180x180\">\r\n"
+				+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-32x32.png\" sizes=\"32x32\" type=\"image/png\">\r\n"
+				+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-16x16.png\" sizes=\"16x16\" type=\"image/png\">\r\n"
+				+ "  <link rel=\"manifest\" href=\"/docs/5.0/assets/img/favicons/manifest.json\">\r\n"
+				+ "  <link rel=\"mask-icon\" href=\"/docs/5.0/assets/img/favicons/safari-pinned-tab.svg\" color=\"#7952b3\">\r\n"
+				+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon.ico\">\r\n"
+				+ "  <meta name=\"theme-color\" content=\"#7952b3\">\r\n"
+				+ "\r\n"
+				+ "  <title> Banco Foo Data </title>\r\n"
+				+ "</head>\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "<body class=\"text-center bg-light text-dark\">Nâo foi possível aplicar"				+ "<form action=/home/ method=post>"
+				+ "<button type=submit> class=\"btn m-2 btn-primary btn-lg\"Voltar</button>"
+				+ "</form>";
 	}
 	@RequestMapping("/sacar/")
 	//Servlet "/sacar/"
@@ -87,12 +143,71 @@ public class HomeControllerMovimentacoes extends HttpServlet {
 			@RequestParam("numero_conta") String numero_conta) {
 		Operacoes op = new Operacoes();
 		if (op.sacar(agencia, numero_conta, saldo)) {
-			String html =""+ saldo + " Sacado na conta " + numero_conta + " Agência " + agencia
+			String html ="<!DOCTYPE html>\r\n"
+					+ "<html>\r\n"
+					+ "\r\n"
+					+ "<head>\r\n"
+					+ "\r\n"
+					+ "  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n"
+					+ "  integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n"
+					+ "\r\n"
+					+ "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js\"></script>\r\n"
+					+ "  \r\n"
+					+ "  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\">\r\n"
+					+ "\r\n"
+					+ "  <!-- Favicons -->\r\n"
+					+ "  <link rel=\"apple-touch-icon\" href=\"/docs/5.0/assets/img/favicons/apple-touch-icon.png\" sizes=\"180x180\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-32x32.png\" sizes=\"32x32\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-16x16.png\" sizes=\"16x16\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"manifest\" href=\"/docs/5.0/assets/img/favicons/manifest.json\">\r\n"
+					+ "  <link rel=\"mask-icon\" href=\"/docs/5.0/assets/img/favicons/safari-pinned-tab.svg\" color=\"#7952b3\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon.ico\">\r\n"
+					+ "  <meta name=\"theme-color\" content=\"#7952b3\">\r\n"
+					+ "\r\n"
+					+ "  <title> Banco Foo Data </title>\r\n"
+					+ "</head>\r\n"
+					+ "\r\n"
+					+ "\r\n"
+					+ "<body class=\"text-center bg-light text-dark\">"+ saldo + " Sacado na conta " + numero_conta + " Agência " + agencia
 			+ "<form action=/home/ method=post>"
-			+ "<input type=submit value=Voltar>"
+			+ "<button type=submit class=\"btn m-2 btn-primary btn-lg\">Voltar</button>"
 			+ "</form>";
 			return html;
 		}
-		else return "Nâo foi possível aplicar";
+		else {
+			String html ="<!DOCTYPE html>\r\n"
+					+ "<html>\r\n"
+					+ "\r\n"
+					+ "<head>\r\n"
+					+ "\r\n"
+					+ "  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n"
+					+ "  integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n"
+					+ "\r\n"
+					+ "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js\"></script>\r\n"
+					+ "  <script src=\"https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js\"></script>\r\n"
+					+ "  \r\n"
+					+ "  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\">\r\n"
+					+ "\r\n"
+					+ "  <!-- Favicons -->\r\n"
+					+ "  <link rel=\"apple-touch-icon\" href=\"/docs/5.0/assets/img/favicons/apple-touch-icon.png\" sizes=\"180x180\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-32x32.png\" sizes=\"32x32\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon-16x16.png\" sizes=\"16x16\" type=\"image/png\">\r\n"
+					+ "  <link rel=\"manifest\" href=\"/docs/5.0/assets/img/favicons/manifest.json\">\r\n"
+					+ "  <link rel=\"mask-icon\" href=\"/docs/5.0/assets/img/favicons/safari-pinned-tab.svg\" color=\"#7952b3\">\r\n"
+					+ "  <link rel=\"icon\" href=\"/docs/5.0/assets/img/favicons/favicon.ico\">\r\n"
+					+ "  <meta name=\"theme-color\" content=\"#7952b3\">\r\n"
+					+ "\r\n"
+					+ "  <title> Banco Foo Data </title>\r\n"
+					+ "</head>\r\n"
+					+ "\r\n"
+					+ "\r\n"
+					+ "<body class=\"text-center bg-light text-dark\">Nâo foi possível fazer o saque - saldo insuficiente <br><form action=/home/ method=post>"
+				+ "<button type=submit class=\"btn m-2 btn-info btn-lg\">Voltar</button>"
+				+ "</form>";
+			return html;
+		}
 	}
 }

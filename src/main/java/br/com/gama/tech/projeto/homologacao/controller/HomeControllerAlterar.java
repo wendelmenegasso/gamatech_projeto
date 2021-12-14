@@ -70,7 +70,7 @@ public class HomeControllerAlterar {
 			bd.atualizaCliente(numero_conta_cliente, nome, eMail, telefone);
 			html = "<h1>Atualizado com súcesso!</h1>"
 					+ "<form action=/home/ method=post>"
-					+ "<input type=submit value=Voltar>"
+					+ "<button type=submit class=btn m-2 btn-info btn-lg>Voltar></button>"
 					+ "</form>";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
