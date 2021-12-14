@@ -57,7 +57,7 @@ public class HomeControllerConsultar {
 		html += "</head>";
 		html += "<body class=text-center bg-light text-dark>";
 		html += "<div class=container>";
-		html += "<form action=/home/consultar/ method=post>";
+		html += "<form action=/home/ method=post>";
 
 		html += "<main>";
 		html += "<div class=py-5 text-center>";
@@ -135,9 +135,6 @@ public class HomeControllerConsultar {
 		html += "</body>";
 		html += "<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>";
 		html += "</html>";
-
-		String arquivo = "../meuprojeto/src/main/resources/webapps/WEB-INF/jsp/consultar_resultado.jsp";
-
 		return html;
 	}
 }

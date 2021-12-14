@@ -389,12 +389,12 @@ public class BancoDeDados {
 					+ "			"	
 					+ "				<title> Banco Foo Data</title>"
 					+ "				"
-					+ "				+ \"<!--    "
-					+ "				+ \"numero da conta"
-					+ "				+ \"ag"
-					+ "				+ \"desc "
-					+ "				+ \"saldo"
-					+ "				+ \"-->"
+					+ "				+ <!--    "
+					+ "				+ "+"numero da conta"
+					+ "				ag"
+					+ "				desc "
+					+ "				saldo"
+					+ "				-->"
 					+ "				"
 					+ "				</head>"
 					+ "				"
@@ -410,11 +410,7 @@ public class BancoDeDados {
 					+ "							<div class=mx-auto text-uppercase style=width: 200px;>Insira sua conta</div>"
 					+ "							<br />"
 					+ "							<div class=col-sm-4>"
-					+ "								<label for=Conta class=form-label>Conta</label>"
-					+ "								<input type=text class=form-control id=conta placeholder=Insira sua conta value="+numero_conta+" required>"
-
-					+ "				"
-///
+					+ ""
 					+ "								<label for=name class=form-label> Nome Completo</label>"
 					+ "								<input type=text class=form-control id=Nome placeholder=pegar do bd value="+resultset.getString("nome_cliente")+ " disabled>"
 					+ "							</div>"
@@ -454,7 +450,7 @@ public class BancoDeDados {
 				else if(resultset.getString("tipo_operacao").equals("1")){
 					tipo_operacao = "Depositar";
 				}
-				html+= "<br> Operaco "+contador+"<br>Tipo Operacao = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("descricao")+" disabled>"
+				html+= "<br> Operacao "+contador+"<br>Tipo Operacao = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("descricao")+" disabled>"
 				+ "Valor = <input type=text class=form-control id=desc placeholder=pegar do bd value="+resultset.getString("saldo")+" disabled>"
 				+ "Tipo Operacao <input type=text class=form-control id=desc placeholder=pegar do bd value="+tipo_operacao+" disabled>";
 				contador++;
