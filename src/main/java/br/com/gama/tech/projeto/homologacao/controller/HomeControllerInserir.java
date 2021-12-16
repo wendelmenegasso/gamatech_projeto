@@ -42,31 +42,31 @@ public class HomeControllerInserir {
 	//Esse método é chamado quando o cliente quer incluuir uma conta
 	//Os paramêtros são pegados da outra tela.
 	public String inserir(@RequestParam("tipo_conta") String tipo_conta,
-			@RequestParam("numero_conta") String numeroConta, @RequestParam("agencia_conta") String agencia,
+			@RequestParam("agencia_conta") String agencia,
 			@RequestParam("nome_cliente") String nome, @RequestParam("cpf_cliente") String cpf,
 			@RequestParam("telefone_contato") String telefone, @RequestParam("email_contato") String eMail)
 			throws IOException, NamingException {
 		this.agencia = agencia;
 		this.saldo = "1000";
-		this.conta = numeroConta;
 		this.tipo_conta = tipo_conta;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = eMail;
 		this.telefone = telefone;
+		Contas contas = new Contas();
+		contas.setAgencia(this.agencia);
+		contas.setConta(contas.ultimaConta()+1);
+		contas.setSaldo(this.saldo);
+		contas.setTipo_conta(this.tipo_conta);
 		Clientes clientes = new Clientes();
 		clientes.setNome(this.nome);
 		clientes.setCpf(this.cpf);
 		clientes.setEmail(eMail);
-		clientes.setNumero_conta(this.conta);
+		clientes.setNumero_conta((contas.ultimaConta()+1)+"");
 		clientes.setTelefone(this.telefone);
 		clientes.setAgencia_conta(this.agencia);
-		Contas contas = new Contas();
-		contas.setAgencia(this.agencia);
-		contas.setConta(this.conta);
-		contas.setSaldo(this.saldo);
-		contas.setTipo_conta(this.tipo_conta);
 		String html = "";
+		this.conta = (contas.ultimaConta()+1)+"";
 		if (clientes.chamaBanco()) {
 			if (contas.chamaBanco()) {
 				//Variável que retorna a tela que vai aparecer

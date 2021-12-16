@@ -3,9 +3,8 @@
 
 <head>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js"></script>
@@ -37,29 +36,29 @@
         
         <br>
         <div class="d-grid gap-2 col-6 mx-auto">
-        <form action="/home/inserir/" action="post">
-          <button type="submit" class="btn m-2 btn-success btn-lg" >Incluir Cliente</button>
+        <form action="/home/inserir/" action="post" class="btn m-2 btn-primary btn-lg">
+          <button type="submit" class="btn m-2 btn-primary btn-lg">Incluir Cliente</button>
           </form>
-                  <form action="/home/consultar/" action="post">
+                  <form action="/home/consultar/" action="post" class="btn m-2 btn-secondary btn-lg">
           
           <button type="submit" class="btn m-2 btn-secondary btn-lg">Consultar Cliente</button>
                </form>
-               <form action="/home/operacao/depositar/" method="post">
+               <form action="/home/operacao/depositar/" method="post" class="btn m-2 btn-success btn-lg">
            <button type="submit" class="btn m-2 btn-success btn-lg">Deposito       </button>
            </form>
-           <form action="/home/operacao/sacar/" method="post">
+           <form action="/home/operacao/sacar/" method="post" class="btn m-2 btn-danger btn-lg">
           <button type="submit" class="btn m-2 btn-danger btn-lg">Saque         </button>
           </form>
-          <form action="/home/operacao/extrato/" method="post">
+          <form action="/home/operacao/extrato/" method="post" class="btn m-2 btn-info btn-lg">
           <button type="submit" class="btn m-2 btn-info btn-lg">Extrato</button>
           </form>
-                  <form action="/home/alterar/" action="post">
+                  <form action="/home/alterar/" action="post" class="btn m-2 btn-warning btn-lg">
           
-          <button type="submit" class="btn m-2 btn-info btn-lg">Alterar Dados</button>
+          <button type="submit" class="btn m-2 btn-warning btn-lg">Alterar Dados</button>
                </form>
-                  <form action="/home/deletar/" action="post">
+                  <form action="/home/deletar/" action="post" class="btn m-2 btn-dark btn-lg">
           
-          <button type="submit" class="btn m-2 btn-danger btn-lg">Desativar Conta</button>
+          <button type="submit" class="btn m-2 btn-dark btn-lg">Desativar Conta</button>
                </form>
         </div>
       </div>

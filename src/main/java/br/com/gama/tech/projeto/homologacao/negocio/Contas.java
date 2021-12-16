@@ -3,8 +3,9 @@ package br.com.gama.tech.projeto.homologacao.negocio;
 import br.com.gama.tech.projeto.homologacao.model.BancoDeDados;
 
 public class Contas {
-	String agencia, tipo_conta, conta, saldo;
-
+	String agencia, tipo_conta, saldo;
+	int conta;
+	BancoDeDados bd = new BancoDeDados();
 	public String getAgencia() {
 		return agencia;
 	}
@@ -21,11 +22,11 @@ public class Contas {
 		this.tipo_conta = tipo_conta;
 	}
 
-	public String getConta() {
+	public int getConta() {
 		return conta;
 	}
 
-	public void setConta(String conta) {
+	public void setConta(int conta) {
 		this.conta = conta;
 	}
 
@@ -37,8 +38,12 @@ public class Contas {
 		this.saldo = saldo;
 	}
 	public boolean chamaBanco() {
-		BancoDeDados bd = new BancoDeDados();
 		bd.conectar();
-		return bd.incluirContas(this.agencia, this.tipo_conta,this.saldo, this.conta);
+		return bd.incluirContas(this.agencia, this.tipo_conta,this.saldo, this.conta+"");
+	}
+	public int ultimaConta() {
+		bd.conectar();
+		return bd.ultimaContaValida();
+		
 	}
 }
