@@ -70,7 +70,7 @@ public class HomeControllerConsultar {
 		html += "<div class=col-sm-7>";
 		html += "<label for=name class=form-label>Nome Completo</label>";
 String nome = bd.consultarNome(cpf,tipo_conta);
-if(nome == null){
+if(nome == "Não encontrado"){
 	html = "Não encontrado"+
 			"<form action=/home/ method=post>"
 			+ "<button type=submit class=\"btn m-2 btn-info btn-lg\">Voltar</button>"

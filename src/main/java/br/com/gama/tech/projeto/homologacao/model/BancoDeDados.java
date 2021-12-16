@@ -409,17 +409,17 @@ public class BancoDeDados {
 			this.resultset = this.statement.executeQuery(query1);
 			this.statement = this.connection.createStatement();
 			boolean fim = false;
-			while (resultset.next()) {
-				minhaConta = resultset.getString("numero_conta");
-				meuNome = resultset.getString("nome_cliente");
-				minhaAgencia = resultset.getString("numero_agencia");
+			while (this.resultset.next()) {
+				minhaConta = this.resultset.getString("numero_conta");
+				meuNome = this.resultset.getString("nome_cliente");
+				minhaAgencia = this.resultset.getString("agencia_conta");
 				System.out.println(minhaConta + "===" + minhaAgencia);
 				String query = "Select * from contas Where (numero_conta=" + minhaConta + " AND numero_agencia="
 						+ minhaAgencia + " AND tipo_conta=" + tipo_conta + ");";
-				System.out.println(query);
+				System.out.println("Busca......"+query);
 				this.resultset = this.statement.executeQuery(query);
 				this.statement = this.connection.createStatement();
-				while (resultset.next()) {
+				while (this.resultset.next()) {
 					fim = true;
 					return meuNome;
 				}
@@ -427,6 +427,7 @@ public class BancoDeDados {
 			// Verifica se a conta existe.
 			if (!resultset.next() && fim == false) {
 				System.out.println("Não encontrado!");
+				return "Não encontrado";
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
