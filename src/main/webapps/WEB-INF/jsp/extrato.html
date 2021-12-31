@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+	<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+	<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+	<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+	<meta name="theme-color" content="#7952b3">
+
+	<title> Banco Foo Data</title>
+
+<!--    
+numero da conta
+ag
+desc 
+saldo
+-->
+
+</head>
+
+<body class="text-center bg-light text-dark">
+
+	<div class="container">
+		<main>
+			<div class="py-5 text-center">
+				<div class="container text-center">
+					<h2 class="text-uppercase">Confira seu extrato!</h2>
+				</div>
+				<div class="mx-auto text-uppercase" style="width: 200px;">Insira sua conta</div>
+				<br />
+				<div class="col-sm-4">
+					<label for="Conta" class="form-label">Conta</label>
+					<input type="text" class="form-control" id="conta" placeholder="Insira sua conta" value="" required>
+					<div class="invalid-feedback">
+						Ã‰ necessÃ¡rio um conta vÃ¡lida
+					</div>
+				</div>
+
+				<hr class="my-4">
+				
+				<div class="col-sm-7">
+					<label for="name" class="form-label"> Nome Completo</label>
+					<input type="text" class="form-control" id="Nome" placeholder="pegar do bd" value="" disabled>
+				</div>
+
+				<hr class="my-4">
+
+				<form>
+					<div class="form-group row">
+						<label for="agencia" class="col-sm-2 col-form-label">Agencia</label>
+						<div class="col-sm-2">
+							<input type="text" id="agencia" value="pegar do bd a agencia" disabled>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="conta" class="col-sm-2 col-form-label">Conta</label>
+						<div class="col-sm-2">
+							<input type="text" id="conta" value="pegar do bd a conta" disabled>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="saldo" class="col-sm-2 col-form-label">Saldo Final</label>
+						<div class="col-sm-2">
+							<input class="form-control" id="saldo" type="text" placeholder="Pegar do bd o Saldo" aria-label="disabled saldo"disabled/>
+						</div>
+					</div>
+				</form>
+				<br>
+				<div class="col-sm-7">
+					<label for="desc" class="form-label">DescriÃ§Ã£o da operaÃ§Ã£o</label>
+					<input type="text" class="form-control" id="desc" placeholder="pegar do bd" value="" disabled>
+					<input type="text" class="form-control" id="desc" placeholder="pegar do bd" value="" disabled>
+					<input type="text" class="form-control" id="desc" placeholder="pegar do bd" value="" disabled>
+				</div>
+
+				<hr class="my-4">
+
+				<br />
+				<button type="button" class="btn btn-secondary btn-lg">Voltar</button>
+				<button type="button" class="btn btn-primary btn-lg">Extrato</button>
+			</div>
+		</main>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

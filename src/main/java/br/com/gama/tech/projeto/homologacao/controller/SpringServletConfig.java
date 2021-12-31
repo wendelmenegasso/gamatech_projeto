@@ -12,7 +12,7 @@
 //    @Bean
 //    public InternalResourceViewResolver resolver() {
 //        InternalResourceViewResolver vr = new InternalResourceViewResolver();
-//        vr.setPrefix("/webapps/WEB-INF/jsp/");
+//        vr.setPrefix("/WEB-INF/jsp/");
 //        vr.setSuffix(".jsp");
 //        return vr;
 //    }

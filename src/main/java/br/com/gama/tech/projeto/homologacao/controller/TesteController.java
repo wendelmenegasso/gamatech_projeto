@@ -1,32 +1,27 @@
-package br.com.gama.tech.projeto.homologacao.controller;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.annotation.GetMapping;
-@RestController
-//@RequestMapping(method=RequestMethod.POST)
-public class TesteController {
-//	@RequestMapping("/teste/")
-//	public String initTeste() {
-//		String html = "";
-//		String arquivo = "teste.jsp";
-//		return arquivo;
-//	}
+//package br.com.gama.tech.projeto.homologacao.controller;
+//
+//import java.util.Map;
+//
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//
+//@Controller
+//public class TesteController {
+//
+////    @RequestMapping(value = "/teste/", method = RequestMethod.GET)
+////    public String homePage() {
+////      return "NewFile";
+////    }
+//	 @GetMapping("/teste/")
+//    public String home(Map<String, Object> model) {
+//        model.put("message", "HowToDoInJava Reader !!");
+//        return "index";
+//	 }
+//	  @RequestMapping("/next")
+//	    public String next(Map<String, Object> model) {
+//	        model.put("message", "You are in new page !!");
+//	        return "next";
+//	    }
 //}
-	//@RequestMapping(value="/teste/", method=RequestMethod.POST)
-	@RequestMapping("/teste/")
-	public ModelAndView homePost() {
-		    ModelAndView modelAndView = new ModelAndView("bank_home");
-		    modelAndView.addObject("message", "Baeldung");
-		    return modelAndView;
-    }
-}
+

@@ -577,7 +577,7 @@ public class BancoDeDados {
 						+ tipo_operacao + " disabled>";
 				contador++;
 			}
-			html += "<hr class=my-4>	<br />" + "							<input type=submit value=Voltar>"
+			html += "<hr class=my-4>	<br />" + "							<button type=submit class='btn m-2 btn-primary btn'-lg>Voltar</button>"
 					+ "</form>" + "" + "						</div>" + "					</main>"
 					+ "				</div>"
 					+ "				<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
